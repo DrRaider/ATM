@@ -5,10 +5,11 @@ https://gist.github.com/bluekvirus/29789fe8080e31d84f921241311e567d#file-jersey-
 create a database named "WebService" (user : root, password : <empty>)
 and the table "users" with :
 
-CREATE TABLE users (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
+CREATE TABLE `users` (
+  `id` INT(6) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
 
