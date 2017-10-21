@@ -71,7 +71,6 @@
       <Position>2</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;1&apos;</DefaultExpression>
     </column>
     <index id="22" parent="8" name="FK_USER_PROFILE">
       <ColNames>user_profile_id</ColNames>
