@@ -10,32 +10,112 @@
     <schema id="4" parent="1" name="mysql"/>
     <schema id="5" parent="1" name="performance_schema"/>
     <schema id="6" parent="1" name="sys"/>
-    <table id="7" parent="2" name="hibernate_sequence"/>
-    <table id="8" parent="2" name="users"/>
-    <column id="9" parent="7" name="next_val">
+    <table id="7" parent="2" name="APP_USER"/>
+    <table id="8" parent="2" name="APP_USER_USER_PROFILE"/>
+    <table id="9" parent="2" name="USER_PROFILE"/>
+    <column id="10" parent="7" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
-    </column>
-    <column id="10" parent="8" name="id">
-      <Position>1</Position>
-      <DataType>int(6)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="11" parent="8" name="name">
+    <column id="11" parent="7" name="sso_id">
       <Position>2</Position>
-      <DataType>varchar(50)|0</DataType>
+      <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="12" parent="8" name="password">
+    <column id="12" parent="7" name="password">
       <Position>3</Position>
-      <DataType>varchar(50)|0</DataType>
+      <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="13" parent="8" name="PRIMARY">
+    <column id="13" parent="7" name="first_name">
+      <Position>4</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="14" parent="7" name="last_name">
+      <Position>5</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="7" name="email">
+      <Position>6</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="7" name="state">
+      <Position>7</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="17" parent="7" name="sso_id">
+      <ColNames>sso_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="18" parent="7" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
+    </key>
+    <key id="19" parent="7" name="sso_id">
+      <ColNames>sso_id</ColNames>
+      <UnderlyingIndexName>sso_id</UnderlyingIndexName>
+    </key>
+    <column id="20" parent="8" name="user_id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="8" name="user_profile_id">
+      <Position>2</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="22" parent="8" name="FK_USER_PROFILE">
+      <ColNames>user_profile_id</ColNames>
+    </index>
+    <key id="23" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id
+user_profile_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="24" parent="8" name="FK_APP_USER">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>WebService</RefSchemaName>
+      <RefTableName>APP_USER</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="25" parent="8" name="FK_USER_PROFILE">
+      <ColNames>user_profile_id</ColNames>
+      <RefSchemaName>WebService</RefSchemaName>
+      <RefTableName>USER_PROFILE</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="26" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="27" parent="9" name="type">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="28" parent="9" name="type">
+      <ColNames>type</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="29" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="30" parent="9" name="type">
+      <ColNames>type</ColNames>
+      <UnderlyingIndexName>type</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

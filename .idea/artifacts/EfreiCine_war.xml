@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="EfreiCine:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="EfreiCIne.war">
+    <root id="archive" name="EfreiCine.war">
       <element id="artifact" artifact-name="EfreiCine:war exploded" />
     </root>
   </artifact>
