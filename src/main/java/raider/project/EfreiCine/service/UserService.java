@@ -68,7 +68,7 @@ public class UserService {
     public List<User> createUser(@FormParam("username") String username,
                                  @FormParam("password") String password) {
         User newUser = new User();
-        newUser.setUsername(username);
+        newUser.setName(username);
         newUser.setPassword(password);
         userDAO.insertNew(newUser);
         return getAllUsers();
@@ -80,12 +80,12 @@ public class UserService {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_HTML)
     @Template(name="/users")
-    public List<User> updateUser(@FormParam("id") String userId,
+    public List<User> updateUser(@FormParam("id") int userId,
                                  @FormParam("username") String username,
                                  @FormParam("password") String password) {
         User user = new User();
         user.setId(userId);
-        user.setUsername(username);
+        user.setName(username);
         user.setPassword(password);
         userDAO.update(user);
         return getAllUsers();
@@ -94,10 +94,10 @@ public class UserService {
     // http://localhost:8080/rest/users/delete/1
     @GET // should use @DELETE
     @Path("delete/{id}")
-    public Response deleteUser(@PathParam("id") String userId) throws Exception {
+    public Response deleteUser(@PathParam("id") int userId) throws Exception {
         User user = new User();
         user.setId(userId);
         userDAO.remove(user);
-        return Response.temporaryRedirect(new URI("/EfreiCine/rest/users")).build();
+        return Response.temporaryRedirect(new URI("/rest/users")).build();
     }
 }

@@ -1,31 +1,41 @@
 package raider.project.EfreiCine.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
-@XmlRootElement
-public class User {
-    private String id;
-    private String username;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="users")
+public class User implements Serializable {
+
+    // member variables
+    @Id
+    @GeneratedValue
+    @Column(name="id")
+    private int id;
+
+    @Column(name="name")
+    private String name;
+
+    @Column(name="password")
     private String password;
 
-    public User(){
-
-    }
-    public User (String id, String username){
-        this.id = id;
-        this.username = username;
-    }
-    public String getId() {
+    // getters & setters
+    public int getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
     public String getPassword() {
         return password;
@@ -33,6 +43,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 }
