@@ -1,6 +1,6 @@
 package raider.project.EfreiCine.model;
 
-public enum UserProfileType {
+    public enum UserProfileType {
     USER("USER"),
     DBA("DBA"),
     ADMIN("ADMIN");
