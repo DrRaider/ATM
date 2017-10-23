@@ -18,10 +18,10 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     </head>
     <body>
-        <hgroup>
+        <header>
         <h3>Sign Up</h3>
-        </hgroup>
-        <form:form method="POST" modelAttribute="user">
+        </header>
+        <form:form method="POST">
             <div class="group">
                 <form:input required="true" type="text" path="firstName" id="firstName"/>
                 <span class="highlight"></span>
