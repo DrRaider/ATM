@@ -6,8 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf08c910-1d13-416f-9fda-0578e50b8068" name="Default" comment="Updated register so that we don't have to specify the level of privilege now (new users are of type 'USER')">
+    <list default="true" id="cf08c910-1d13-416f-9fda-0578e50b8068" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/raider/project/EfreiCine/controller/HelloWorldController.java" afterPath="$PROJECT_DIR$/src/main/java/raider/project/EfreiCine/controller/HelloWorldController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -138,8 +139,8 @@
       <file leaf-file-name="HelloWorldController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/raider/project/EfreiCine/controller/HelloWorldController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="119" column="23" lean-forward="false" selection-start-line="119" selection-start-column="23" selection-end-line="119" selection-end-column="23" />
+            <state relative-caret-position="374">
+              <caret line="22" column="52" lean-forward="true" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -661,7 +662,7 @@
       <workItem from="1508603662838" duration="546000" />
       <workItem from="1508604304116" duration="8482000" />
       <workItem from="1508616134664" duration="10581000" />
-      <workItem from="1508780163878" duration="5694000" />
+      <workItem from="1508780163878" duration="5729000" />
     </task>
     <task id="LOCAL-00001" summary="Updated register so that we don't have to specify the level of privilege now (new users are of type 'USER')">
       <created>1508785599272</created>
@@ -684,11 +685,18 @@
       <option name="project" value="LOCAL" />
       <updated>1508785858069</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated register so that we don't have to specify the level of privilege now (new users are of type 'USER')">
+      <created>1508785864695</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1508785864695</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39140000" />
+    <option name="totallyTimeSpent" value="39175000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1121,8 +1129,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/raider/project/EfreiCine/controller/HelloWorldController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="119" column="23" lean-forward="false" selection-start-line="119" selection-start-column="23" selection-end-line="119" selection-end-column="23" />
+        <state relative-caret-position="374">
+          <caret line="22" column="52" lean-forward="true" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
