@@ -1,6 +1,6 @@
 package raider.project.EfreiCine.controller;
 
-import java.util.List;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -91,19 +91,23 @@ public class HelloWorldController {
             System.out.println("There are errors");
             return "register";
         }
+        UserProfile pro = new UserProfile();
+        pro.setId(1);
+        pro.setType("USER");
+        Set<UserProfile> profile = new HashSet<>();
+        profile.add(pro);
+        user.setUserProfiles(profile);
         userService.save(user);
 
-        System.out.println("First Name : "+user.getFirstName());
-        System.out.println("Last Name : "+user.getLastName());
-        System.out.println("SSO ID : "+user.getSsoId());
-        System.out.println("Password : "+user.getPassword());
-        System.out.println("Email : "+user.getEmail());
+        System.out.println("First Name : " + user.getFirstName());
+        System.out.println("Last Name : " + user.getLastName());
+        System.out.println("SSO ID : " + user.getSsoId());
+        System.out.println("Password : " + user.getPassword());
+        System.out.println("Email : " + user.getEmail());
         System.out.println("Checking UsrProfiles....");
-        if(user.getUserProfiles()!=null){
-            for(UserProfile profile : user.getUserProfiles()){
-                System.out.println("Profile : "+ profile.getType());
-            }
-        }
+
+        System.out.println("Email : " + user.getUserProfiles());
+
 
         model.addAttribute("success", "User " + user.getFirstName() + " has been registered successfully");
         return "registrationsuccess";
@@ -124,11 +128,5 @@ public class HelloWorldController {
         return userName;
     }
 
-
-
-    @ModelAttribute("roles")
-    public List<UserProfile> initializeProfiles() {
-        return userProfileService.findAll();
-    }
 
 }

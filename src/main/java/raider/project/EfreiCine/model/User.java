@@ -51,7 +51,7 @@ public class User {
     @JoinTable(name = "APP_USER_USER_PROFILE",
             joinColumns = { @JoinColumn(name = "USER_ID") },
             inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
-    private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+    private Set<UserProfile> userProfiles = new HashSet<>();
 
     public int getId() {
         return id;

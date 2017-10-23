@@ -41,14 +41,15 @@
             <div class="group">
                 <input type="password" id="password" name="password" required><span class="highlight"></span><span class="bar"></span>
                 <label>Password </label>
-            </div>                <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
+            </div>
+            <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
             <div class="group">
                 <div class="form-actions">
                     <input class="btn btn-primary" type="submit" value="Login"/>
                 </div>
                 <p class="forgot">
                     <a class="col-md-6" href="register">Don't have an account? Sign up !</a>
-                    <a class="col-md-6 text-right" href="/forgot-password">Forgot Password?</a>
+                    <a class="col-md-6 text-right" href="forgot-password">Forgot Password?</a>
                 </p>
             </div>
         </form>

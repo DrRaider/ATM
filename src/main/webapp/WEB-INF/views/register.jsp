@@ -67,15 +67,6 @@
                     <form:errors path="email" class="help-inline"/>
                 </div>
             </div>
-            <div class="group">
-                <label class="col-md-3 control-lable" for="userProfiles">Roles</label>
-                <div class="col-md-7">
-                    <form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm"/>
-                    <div class="has-error">
-                        <form:errors path="userProfiles" class="help-inline"/>
-                    </div>
-                </div>
-            </div>
             <div class="form-actions">
                 <input class="btn btn-primary" type="submit" value="Sign Up"/>
             </div>
