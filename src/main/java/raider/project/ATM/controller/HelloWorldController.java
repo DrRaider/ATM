@@ -1,4 +1,4 @@
-package raider.project.EfreiCine.controller;
+package raider.project.ATM.controller;
 
 import java.util.*;
 
@@ -17,10 +17,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import raider.project.EfreiCine.model.User;
-import raider.project.EfreiCine.model.UserProfile;
-import raider.project.EfreiCine.service.UserProfileService;
-import raider.project.EfreiCine.service.UserService;
+import raider.project.ATM.model.User;
+import raider.project.ATM.model.UserProfile;
+import raider.project.ATM.service.UserProfileService;
+import raider.project.ATM.service.UserService;
 
 
 @Controller

@@ -1,4 +1,4 @@
-package raider.project.EfreiCine.configuration;
+package raider.project.ATM.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

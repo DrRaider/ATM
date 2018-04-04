@@ -1,6 +1,6 @@
-package raider.project.EfreiCine.dao;
+package raider.project.ATM.dao;
 
-import raider.project.EfreiCine.model.User;
+import raider.project.ATM.model.User;
 
 public interface UserDao {
 

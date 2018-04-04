@@ -1,11 +1,11 @@
-package raider.project.EfreiCine.configuration;
+package raider.project.ATM.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import raider.project.EfreiCine.model.UserProfile;
-import raider.project.EfreiCine.service.UserProfileService;
+import raider.project.ATM.model.UserProfile;
+import raider.project.ATM.service.UserProfileService;
 
 @Component
 public class RoleToUserProfileConverter implements Converter<Object, UserProfile>{

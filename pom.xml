@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>raider.project</groupId>
-    <artifactId>EfreiCine</artifactId>
+    <artifactId>ATM</artifactId>
     <packaging>war</packaging>
     <version>1.0</version>
-    <name>EfreiCine</name>
+    <name>ATM</name>
 
     <properties>
         <springframework.version>4.1.6.RELEASE</springframework.version>
@@ -119,12 +119,12 @@
                     <version>2.4</version>
                     <configuration>
                         <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                        <warName>EfreiCine</warName>
+                        <warName>ATM</warName>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
-        <finalName>EfreiCine</finalName>
+        <finalName>ATM</finalName>
     </build>
 </project>
