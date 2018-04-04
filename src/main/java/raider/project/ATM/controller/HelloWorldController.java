@@ -32,7 +32,12 @@ public class HelloWorldController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/","/login"}, method = RequestMethod.GET)
+    public String loginPage() {
+        return "login";
+    }
+    
+    @RequestMapping(value =  "/home" , method = RequestMethod.GET)
     public String homePage(ModelMap model) {
         model.addAttribute("greeting", "Hi, Welcome to mysite");
         return "welcome";
@@ -56,10 +61,7 @@ public class HelloWorldController {
         return "accessDenied";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginPage() {
-        return "login";
-    }
+    
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
