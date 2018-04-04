@@ -1,4 +1,4 @@
-package raider.project.EfreiCine.service;
+package raider.project.ATM.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import raider.project.EfreiCine.model.User;
-import raider.project.EfreiCine.model.UserProfile;
+import raider.project.ATM.model.User;
+import raider.project.ATM.model.UserProfile;
 
 @Service("customUserDetailsService")
 class CustomUserDetailsService implements UserDetailsService{

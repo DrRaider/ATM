@@ -1,10 +1,10 @@
-package raider.project.EfreiCine.dao;
+package raider.project.ATM.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import raider.project.EfreiCine.model.User;
+import raider.project.ATM.model.User;
 
 @Repository("userDao")
 public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {

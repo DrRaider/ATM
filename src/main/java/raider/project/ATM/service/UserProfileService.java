@@ -1,8 +1,8 @@
-package raider.project.EfreiCine.service;
+package raider.project.ATM.service;
 
 import java.util.List;
 
-import raider.project.EfreiCine.model.UserProfile;
+import raider.project.ATM.model.UserProfile;
 
 
 public interface UserProfileService {

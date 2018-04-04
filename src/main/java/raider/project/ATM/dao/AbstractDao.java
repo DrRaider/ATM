@@ -1,4 +1,4 @@
-package raider.project.EfreiCine.dao;
+package raider.project.ATM.dao;
 
 import java.io.Serializable;
 
