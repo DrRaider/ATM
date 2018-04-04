@@ -1,4 +1,4 @@
-package raider.project.EfreiCine.configuration;
+package raider.project.ATM.configuration;
 
 
 import java.util.Properties;
@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "raider.project.EfreiCine.configuration" })
+@ComponentScan({ "raider.project.ATM.configuration" })
 @PropertySource(value = { "classpath:application.properties" })
 public class HibernateConfiguration {
 
@@ -30,7 +30,7 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("raider.project.EfreiCine.model");
+        sessionFactory.setPackagesToScan("raider.project.ATM.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

@@ -1,8 +1,8 @@
-package raider.project.EfreiCine.dao;
+package raider.project.ATM.dao;
 
 import java.util.List;
 
-import raider.project.EfreiCine.model.UserProfile;
+import raider.project.ATM.model.UserProfile;
 
 public interface UserProfileDao {
 

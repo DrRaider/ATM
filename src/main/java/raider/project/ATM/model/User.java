@@ -1,4 +1,4 @@
-package raider.project.EfreiCine.model;
+package raider.project.ATM.model;
 
 import java.util.HashSet;
 import java.util.Set;

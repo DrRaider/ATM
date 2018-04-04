@@ -1,6 +1,6 @@
-package raider.project.EfreiCine.service;
+package raider.project.ATM.service;
 
-import raider.project.EfreiCine.model.User;
+import raider.project.ATM.model.User;
 
 public interface UserService {
 

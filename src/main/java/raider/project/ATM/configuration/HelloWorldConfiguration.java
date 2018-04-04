@@ -1,4 +1,4 @@
-package raider.project.EfreiCine.configuration;
+package raider.project.ATM.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "raider.project.EfreiCine")
+@ComponentScan(basePackages = "raider.project.ATM")
 public class HelloWorldConfiguration extends WebMvcConfigurerAdapter {
 
     @Autowired
