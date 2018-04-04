@@ -8,5 +8,6 @@
 Greeting : ${greeting}
 <h1>Welcome on your account</h1>
 <p>what do you want to do?</p>
+<p><a href="/moneyMove.jsp">Move money</a></p>
 </body>
 </html>
