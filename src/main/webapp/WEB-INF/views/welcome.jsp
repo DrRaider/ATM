@@ -6,6 +6,7 @@
 </head>
 <body>
 Greeting : ${greeting}
-This is a welcome page.
+<h1>Welcome on your account</h1>
+<p>what do you want to do?</p>
 </body>
 </html>
