@@ -1,6 +1,7 @@
 target/
 
 .idea/
+src/.idea/
 
 # CMake
 cmake-build-debug/
