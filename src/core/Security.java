@@ -32,8 +32,8 @@ public class Security {
                     return true;
                 }
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         return false;
@@ -54,8 +54,8 @@ public class Security {
             while (result.next()) {
             	idCard = result.getInt("ID");
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         return idCard;

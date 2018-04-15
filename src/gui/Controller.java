@@ -1,8 +1,6 @@
 package gui;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,30 +42,38 @@ public class Controller extends HttpServlet {
     		Routing.dispatch("login", request, response);
     	}
 
-    	if (request.getParameter("withdraw") != null || request.getParameter("add") != null) {
-    		if (request.getParameter("withdraw") != null) {
-    			request.setAttribute("trade", "Withdraw");
-        	} else if (request.getParameter("add") != null)	{
-    			request.setAttribute("trade", "Add money");
-        	}
-    		
-    		Routing.dispatch("trade", request, response);
+    	if (request.getParameter("withdraw") != null) {
+			request.setAttribute("trade", "Withdraw");
+			Routing.dispatch("trade", request, response);
+    	} else if (request.getParameter("add") != null)	{
+			request.setAttribute("trade", "Add money");
+			Routing.dispatch("trade", request, response);
+    	} else if (request.getParameter("details") != null)	{
+    		request.setAttribute("amount", central.amount());
+			Routing.dispatch("details", request, response);
     	}
+    		
 
     	if (request.getParameter("run") != null) {
-    		int amount = Integer.parseInt(request.getParameter("amount"));
     		boolean done = false;
-    		
     		if (request.getParameter("trade").equals("Withdraw")) {
-
+    			done = central.withdraw(request.getParameter("amount"));
     		} else if(request.getParameter("trade").equals("Add money")) {
-
+    			System.out.println(request.getParameter("amount"));
+    			done = central.addMoney(request.getParameter("amount"));
     		}
     		
+    		System.out.println("Done: " + done);
     		if (done) {
     			request.setAttribute("success", "Success");
     			Routing.dispatch("atm", request, response);
     		} else {
+    			if (request.getParameter("withdraw") != null) {
+    				request.setAttribute("trade", "Withdraw");
+    	    	} else if (request.getParameter("add") != null)	{
+    				request.setAttribute("trade", "Add money");
+    	    	}
+    			
     			request.setAttribute("error", "Error");
     			Routing.dispatch("trade", request, response);
     		}

@@ -15,55 +15,68 @@ CREATE SCHEMA IF NOT EXISTS `atm` DEFAULT CHARACTER SET utf8 ;
 USE `atm` ;
 
 -- -----------------------------------------------------
--- Table `atm`.`USERS`
+-- Table `atm`.`users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `atm`.`USERS` (
-  `ID` INT NOT NULL,
+DROP TABLE IF EXISTS `atm`.`users` ;
+
+CREATE TABLE IF NOT EXISTS `atm`.`users` (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `LASTNAME` VARCHAR(32) NOT NULL,
   `FIRSTNAME` VARCHAR(255) NOT NULL,
-  `BANK` TINYINT(1) NULL,
+  `BANK` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `atm`.`CARD`
+-- Table `atm`.`card`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `atm`.`CARD` (
-  `ID` INT NOT NULL,
+DROP TABLE IF EXISTS `atm`.`card` ;
+
+CREATE TABLE IF NOT EXISTS `atm`.`card` (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `CARD` VARCHAR(255) NOT NULL,
   `PASSWORD` VARCHAR(255) NOT NULL,
-  `ID_USER` INT NOT NULL,
+  `ID_USER` INT(11) NOT NULL,
   PRIMARY KEY (`ID`),
   INDEX `ID_USER_idx` (`ID_USER` ASC),
   CONSTRAINT `ID_USER`
     FOREIGN KEY (`ID_USER`)
-    REFERENCES `atm`.`USERS` (`ID`)
+    REFERENCES `atm`.`users` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `atm`.`TRANSACTION`
+-- Table `atm`.`transaction`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `atm`.`TRANSACTION` (
-  `ID` INT NOT NULL,
+DROP TABLE IF EXISTS `atm`.`transaction` ;
+
+CREATE TABLE IF NOT EXISTS `atm`.`transaction` (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
   `AMOUNT` FLOAT(13,2) NOT NULL,
-  `ID_CARD` INT NOT NULL,
+  `ID_CARD` INT(11) NOT NULL,
   PRIMARY KEY (`ID`),
   INDEX `ID_CARD_idx` (`ID_CARD` ASC),
   CONSTRAINT `ID_CARD`
     FOREIGN KEY (`ID_CARD`)
-    REFERENCES `atm`.`CARD` (`ID`)
+    REFERENCES `atm`.`card` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-INSERT INTO USERS(ID, LASTNAME, FIRSTNAME, BANK) VALUES(1, 'Frédéric', 'Rosso', 1);
-INSERT INTO CARD(ID, CARD, PASSWORD, ID_USER) VALUES(1, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1);
+INSERT INTO USERS(ID, LASTNAME, FIRSTNAME, BANK) VALUES(NULL, 'Frédéric', 'Rosso', 1);
+INSERT INTO CARD(ID, CARD, PASSWORD, ID_USER) VALUES(NULL, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1);
+INSERT INTO TRANSACTION(ID, AMOUNT, ID_CARD) VALUES(NULL, 10.0, 1);

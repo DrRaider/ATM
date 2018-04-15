@@ -13,12 +13,19 @@
 <body>
 	<h1>Index</h1>
 	
+	<% 	if (request.getAttribute("success") != null) { %>
+			<div class="alert alert-danger" role="alert">
+		        <%= request.getAttribute("success") %>
+		    </div>
+	<%	} %>
+	
 	<form action="Controller" method="post">
 		<div class="group">
             <div class="form-actions">
                 <input class="btn btn-primary" type="submit" value="Logout" name="logout"/>
                 <input class="btn btn-primary" type="submit" value="Withdraw" name="withdraw" />
 				<input class="btn btn-primary" type="submit" value="Add money" name="add"/>
+				<input class="btn btn-primary" type="submit" value="Details" name="details"/>
             </div>
         </div>
 	</form>
