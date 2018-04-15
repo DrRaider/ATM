@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
 <html>
 <head>
@@ -8,5 +9,6 @@
 Greeting : ${greeting}
 <h1>Welcome on your account</h1>
 <p>what do you want to do?</p>
+<p><a href="<c:url value="/moneyMove" />">Move money</a></p>
 </body>
 </html>

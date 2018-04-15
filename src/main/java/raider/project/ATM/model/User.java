@@ -1,5 +1,6 @@
 package raider.project.ATM.model;
 
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,10 +17,9 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
-@Table(name="APP_USER")
-public class User {
-
+    @Entity
+    @Table(name="APP_USER")
+    public class User {
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
@@ -43,15 +43,18 @@ public class User {
     @Column(name="EMAIL", nullable=false)
     private String email;
 
-    @NotEmpty
-    @Column(name="STATE", nullable=false)
-    private String state=State.ACTIVE.getState();
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "APP_USER_USER_PROFILE",
             joinColumns = { @JoinColumn(name = "USER_ID") },
             inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
     private Set<UserProfile> userProfiles = new HashSet<>();
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "APP_USER_BANK",
+            joinColumns = { @JoinColumn(name = "USER_ID") },
+            inverseJoinColumns = { @JoinColumn(name = "BANK_ID") })
+    private Set<UserProfile> userBank = new HashSet<>();
 
     public int getId() {
         return id;
@@ -101,14 +104,6 @@ public class User {
         this.email = email;
     }
 
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
     public Set<UserProfile> getUserProfiles() {
         return userProfiles;
     }
@@ -117,40 +112,57 @@ public class User {
         this.userProfiles = userProfiles;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + id;
-        result = prime * result + ((ssoId == null) ? 0 : ssoId.hashCode());
-        return result;
+    public Set<UserProfile> getUserBank() {
+        return userBank;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof User))
-            return false;
-        User other = (User) obj;
-        if (id != other.id)
-            return false;
-        if (ssoId == null) {
-            if (other.ssoId != null)
+    public void setUserBank(Set<UserProfile> userBank) {
+        this.userBank = userBank;
+    }
+
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            User user = (User) o;
+
+            if (id != user.id) return false;
+            if (ssoId != null ? !ssoId.equals(user.ssoId) : user.ssoId != null) return false;
+            if (password != null ? !password.equals(user.password) : user.password != null) return false;
+            if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+            if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+            if (email != null ? !email.equals(user.email) : user.email != null) return false;
+            if (userProfiles != null ? !userProfiles.equals(user.userProfiles) : user.userProfiles != null)
                 return false;
-        } else if (!ssoId.equals(other.ssoId))
-            return false;
-        return true;
+            return userBank != null ? userBank.equals(user.userBank) : user.userBank == null;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = id;
+            result = 31 * result + (ssoId != null ? ssoId.hashCode() : 0);
+            result = 31 * result + (password != null ? password.hashCode() : 0);
+            result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+            result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+            result = 31 * result + (email != null ? email.hashCode() : 0);
+            result = 31 * result + (userProfiles != null ? userProfiles.hashCode() : 0);
+            result = 31 * result + (userBank != null ? userBank.hashCode() : 0);
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "User{" +
+                    "id=" + id +
+                    ", ssoId='" + ssoId + '\'' +
+                    ", password='" + password + '\'' +
+                    ", firstName='" + firstName + '\'' +
+                    ", lastName='" + lastName + '\'' +
+                    ", email='" + email + '\'' +
+                    ", userProfiles=" + userProfiles +
+                    ", userBank=" + userBank +
+                    '}';
+        }
     }
-
-    @Override
-    public String toString() {
-        return "User [id=" + id + ", ssoId=" + ssoId + ", password=" + password
-                + ", firstName=" + firstName + ", lastName=" + lastName
-                + ", email=" + email + ", state=" + state + ", userProfiles=" + userProfiles +"]";
-    }
-
-
-}
