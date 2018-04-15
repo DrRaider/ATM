@@ -59,20 +59,18 @@ public class Controller extends HttpServlet {
     		if (request.getParameter("trade").equals("Withdraw")) {
     			done = central.withdraw(request.getParameter("amount"));
     		} else if(request.getParameter("trade").equals("Add money")) {
-    			System.out.println(request.getParameter("amount"));
     			done = central.addMoney(request.getParameter("amount"));
     		}
     		
-    		System.out.println("Done: " + done);
     		if (done) {
     			request.setAttribute("success", "Success");
     			Routing.dispatch("atm", request, response);
     		} else {
-    			if (request.getParameter("withdraw") != null) {
+    			if (request.getParameter("trade").equals("Withdraw")) {
     				request.setAttribute("trade", "Withdraw");
-    	    	} else if (request.getParameter("add") != null)	{
-    				request.setAttribute("trade", "Add money");
-    	    	}
+        		} else if(request.getParameter("trade").equals("Add money")) {
+        			request.setAttribute("trade", "Add money");
+        		}
     			
     			request.setAttribute("error", "Error");
     			Routing.dispatch("trade", request, response);

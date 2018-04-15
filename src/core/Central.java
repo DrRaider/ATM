@@ -19,8 +19,6 @@ public class Central {
 	
 	public boolean withdraw(String input) {
 		int amount = 0;
-		
-		System.out.println("Input: " + input);
 
 		try {
 			amount = Integer.parseInt(input);
@@ -28,8 +26,6 @@ public class Central {
 			e.printStackTrace();
 			return false;
 	    }
-		
-		System.out.println("Amount: " + amount);
 		
 		try {
 			PreparedStatement preparedStatement = db.prepareStatement("SELECT SUM(AMOUNT) SUM FROM TRANSACTION WHERE ID_CARD = ?");
@@ -40,9 +36,6 @@ public class Central {
 	        while (result.next()) {
 	        	total_amount = result.getInt("SUM");
 	        }
-	
-	        System.out.println("Total amount: " + total_amount);
-	        System.out.println("Amount: " + amount);
 
 	    	if (amount <= total_amount) {
 				Statement statement = (Statement) db.createStatement();
@@ -60,8 +53,6 @@ public class Central {
 	
 	public boolean addMoney(String input) {
 		int amount = 0;
-		
-		System.out.println("Input: " + input);
 
 		try {
 			amount = Integer.parseInt(input);
@@ -69,9 +60,7 @@ public class Central {
 			e.printStackTrace();
 			return false;
 	    }
-		
-		System.out.println("Amount: " + amount);
-		
+
 		try {
 			Statement statement = (Statement) db.createStatement();
 			statement.execute("INSERT INTO TRANSACTION (ID, AMOUNT, ID_CARD) VALUES (NULL, " + amount + ", " + this.idCard + ")");
@@ -79,9 +68,7 @@ public class Central {
 			e.printStackTrace();
 			return false;
 		}
-		
-		System.out.println("ADD TRANSACTION DONE");
-		
+
 		return true;
 	}
 	

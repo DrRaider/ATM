@@ -9,7 +9,7 @@
 	<h1>${trade}</h1>
 	<% 	if (request.getAttribute("error") != null) { %>
 			<div class="alert alert-danger" role="alert">
-		        <%= request.getAttribute("error") %>
+				<%= request.getAttribute("error") %>
 		    </div>
 	<%	} %>
 
