@@ -18,24 +18,6 @@ public class Central {
 		this.idCard = idCard;
 	}
 	
-	public ArrayList<Float> transac()
-	{
-		ArrayList<Float> transactions = new ArrayList<>();
-		try {
-			PreparedStatement preparedStatement = db.prepareStatement("SELECT AMOUNT FROM TRANSACTION WHERE ID_CARD = ?");
-	        preparedStatement.setInt(1, idCard);
-	        ResultSet result = preparedStatement.executeQuery();
-	
-	        while (result.next()) {
-	        	transactions.add(result.getFloat("AMOUNT"));
-	        }
-	    	
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return transactions;
-	}
-	
 	public boolean withdraw(String input) {
 		int amount = 0;
 
@@ -110,5 +92,25 @@ public class Central {
         }
 
         return "0";
+	}
+	
+	public ArrayList transactions() {
+		ArrayList t = new ArrayList();
+		PreparedStatement statement = null;
+        ResultSet result = null;
+
+        try {
+            statement = db.prepareStatement("SELECT AMOUNT FROM TRANSACTION WHERE ID_CARD = ?");
+            statement.setInt(1, idCard);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+            	t.add(result.getString("AMOUNT"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		
+		return t;
 	}
 }

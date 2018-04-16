@@ -50,9 +50,8 @@ public class Controller extends HttpServlet {
 			request.setAttribute("trade", "Add money");
 			Routing.dispatch("trade", request, response);
     	} else if (request.getParameter("details") != null)	{
-
     		request.setAttribute("amount", central.amount());
-    		request.setAttribute("transactions", central.transac());
+    		request.setAttribute("transactions", central.transactions());
 			Routing.dispatch("details", request, response);
     	}
     		
@@ -80,7 +79,11 @@ public class Controller extends HttpServlet {
     		}
     	}
     	
-    	Routing.dispatch("login", request, response);
+    	try {
+    		Routing.dispatch("login", request, response);
+	    } catch (IllegalStateException e) {
+		    e.printStackTrace();
+		}
     }
     
 	/**
