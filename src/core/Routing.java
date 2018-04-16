@@ -8,26 +8,22 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Routing {
 	public static void dispatch(String page, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			switch (page) {
-				case "login":
-					request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-					break;
-				case "atm":
-					request.getRequestDispatcher("/WEB-INF/atm.jsp").forward(request, response);
-					break;
-				case "trade":
-					request.getRequestDispatcher("/WEB-INF/trade.jsp").forward(request, response);
-					break;
-				case "details":
-					request.getRequestDispatcher("/WEB-INF/details.jsp").forward(request, response);
-					break;
-				default:
-					request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-					break;
-			}
-		} catch (IllegalStateException e) {
-		    e.printStackTrace();
+		switch (page) {
+			case "login":
+				request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+				break;
+			case "atm":
+				request.getRequestDispatcher("/WEB-INF/atm.jsp").forward(request, response);
+				break;
+			case "trade":
+				request.getRequestDispatcher("/WEB-INF/trade.jsp").forward(request, response);
+				break;
+			case "details":
+				request.getRequestDispatcher("/WEB-INF/details.jsp").forward(request, response);
+				break;
+			default:
+				request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+				break;
 		}
 
 		return;
