@@ -30,6 +30,7 @@ public class Controller extends HttpServlet {
     		if (Security.login(request.getParameter("username"), request.getParameter("password"))) {
     			session.setAttribute("user", "connected");
     			central = new Central(Security.getIdCard(request.getParameter("username")));
+    			request.setAttribute("amount", central.amount());
 			 	Routing.dispatch("atm", request, response);
 			 } else {
     			session.setAttribute("error", "Card / Password invalid !");
@@ -49,7 +50,9 @@ public class Controller extends HttpServlet {
 			request.setAttribute("trade", "Add money");
 			Routing.dispatch("trade", request, response);
     	} else if (request.getParameter("details") != null)	{
+
     		request.setAttribute("amount", central.amount());
+    		request.setAttribute("transactions", central.transac());
 			Routing.dispatch("details", request, response);
     	}
     		

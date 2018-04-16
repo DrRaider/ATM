@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
 
@@ -15,6 +16,24 @@ public class Central {
 	
 	public Central(int idCard) {
 		this.idCard = idCard;
+	}
+	
+	public ArrayList<Float> transac()
+	{
+		ArrayList<Float> transactions = new ArrayList<>();
+		try {
+			PreparedStatement preparedStatement = db.prepareStatement("SELECT AMOUNT FROM TRANSACTION WHERE ID_CARD = ?");
+	        preparedStatement.setInt(1, idCard);
+	        ResultSet result = preparedStatement.executeQuery();
+	
+	        while (result.next()) {
+	        	transactions.add(result.getFloat("AMOUNT"));
+	        }
+	    	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return transactions;
 	}
 	
 	public boolean withdraw(String input) {
