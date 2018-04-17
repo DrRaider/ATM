@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-
-import com.mysql.jdbc.Statement;
+import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 
 import dao.Database;
 
@@ -40,7 +40,7 @@ public class Central {
 
 	    	if (amount <= total_amount) {
 				Statement statement = (Statement) db.createStatement();
-				statement.execute("INSERT INTO transaction (ID, AMOUNT, ID_CARD) VALUES (NULL, -" + amount + ", " + this.idCard + ")");
+				statement.execute("INSERT INTO transaction (ID, AMOUNT, DATE, ID_CARD) VALUES (NULL, -" + amount + ", CURRENT_DATE, " + this.idCard + ")");
 	    	} else {
 	    		return false;
 	    	}
@@ -64,7 +64,7 @@ public class Central {
 
 		try {
 			Statement statement = (Statement) db.createStatement();
-			statement.execute("INSERT INTO transaction (ID, AMOUNT, ID_CARD) VALUES (NULL, " + amount + ", " + this.idCard + ")");
+			statement.execute("INSERT INTO transaction (ID, AMOUNT, DATE, ID_CARD) VALUES (NULL, " + amount + ", CURRENT_DATE, " + this.idCard + ")");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -94,18 +94,18 @@ public class Central {
         return "0";
 	}
 	
-	public ArrayList transactions() {
-		ArrayList t = new ArrayList();
+	public Map<String, String> transactions() {
+		Map<String, String> t = new HashMap<String, String>();
 		PreparedStatement statement = null;
         ResultSet result = null;
 
         try {
-            statement = db.prepareStatement("SELECT AMOUNT FROM transaction WHERE ID_CARD = ?");
+            statement = db.prepareStatement("SELECT AMOUNT, DATE FROM transaction WHERE ID_CARD = ?");
             statement.setInt(1, idCard);
             result = statement.executeQuery();
 
             while (result.next()) {
-            	t.add(result.getString("AMOUNT"));
+            	t.put(result.getString("AMOUNT"), result.getString("DATE"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

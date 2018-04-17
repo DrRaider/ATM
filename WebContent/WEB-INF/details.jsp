@@ -1,7 +1,7 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
 <%@ page import="java.util.Objects" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,9 +20,7 @@
 		<hgroup>
 			<h1>Details account</h1>
 		</hgroup>
-		<%
-			ArrayList<String> transactions = (ArrayList<String>) request.getAttribute("transactions");
-		%>
+		<% Map<String, String> transactions = (HashMap<String, String>) request.getAttribute("transactions"); %>
 		<form action="Controller" method="post">
 			<div class="group">
 				<div class="form-actions">
@@ -31,8 +29,8 @@
 							<th>Transfers</th>
 						</tr>
 						<%
-							for (String s: transactions) {
-								if (Objects.equals(s.substring(0, 1), "-")) {
+							for (Map.Entry<String, String> entry : transactions.entrySet()) {
+								if (Objects.equals(entry.getKey().substring(0, 1), "-")) {
 						%>
 						<tr class="danger">
 						<%
@@ -45,7 +43,8 @@
 						%>
 							<td>
 						<%
-								out.println(s + " €");
+								out.println(entry.getKey() + " €");
+								out.println("<span style=\"float: right\">" + entry.getValue() + "</span>");
 						%>
 							</td>
 						</tr>
@@ -54,7 +53,7 @@
 						%>
 					</table>
 					<h2>Total: ${amount} €</h2>
-					<input class="btn btn-primary" type="submit" value="Login" name="Return"/>
+					<input class="btn btn-primary" type="submit" value="Comeback" name="Return"/>
 
 		</div>
 	</body>
