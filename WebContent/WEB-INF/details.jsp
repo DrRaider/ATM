@@ -1,24 +1,61 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Objects" %>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Details account</title>
-</head>
-<body>
-	<h1>Details account</h1>
-	
-	<table>
-	<%
-	 ArrayList<String> transactions = (ArrayList<String>) request.getAttribute("transactions");
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="description" content=""/>
+		<meta name="author" content=""/>
+		<link rel="icon" href="../../favicon.ico"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<!-- Custom styles for this template-->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/app.css"/>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<title>Details account</title>
+	</head>
+	<body>
+		<hgroup>
+			<h1>Details account</h1>
+		</hgroup>
+		<%
+			ArrayList<String> transactions = (ArrayList<String>) request.getAttribute("transactions");
+		%>
+		<form action="Controller" method="post">
+			<div class="group">
+				<div class="form-actions">
+					<table class="table table-striped">
+						<tr>
+							<th>Transfers</th>
+						</tr>
+						<%
+							for (String s: transactions) {
+								if (Objects.equals(s.substring(0, 1), "-")) {
+						%>
+						<tr class="danger">
+						<%
+								}
+								else {
+						%>
+						<tr class="success">
+						<%
+								}
+						%>
+							<td>
+						<%
+								out.println(s + " €");
+						%>
+							</td>
+						</tr>
+						<%
+							}
+						%>
+					</table>
+					<h2>Total: ${amount} €</h2>
+					<input class="btn btn-primary" type="submit" value="Login" name="Return"/>
 
-	for(String transaction : transactions) {
-	    out.println("<tr><td><p>"+transaction+" €</p></td></tr>");
-	} %>
-	</table>
-	<p>Amount: ${amount} €</p>
-
-</body>
+		</div>
+	</body>
 </html>

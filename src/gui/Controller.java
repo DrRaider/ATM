@@ -73,7 +73,6 @@ public class Controller extends HttpServlet {
         		} else if(request.getParameter("trade").equals("Add money")) {
         			request.setAttribute("trade", "Add money");
         		}
-    			
     			request.setAttribute("error", "Error");
     			Routing.dispatch("trade", request, response);
     		}

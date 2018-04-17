@@ -41,7 +41,7 @@
             </div>
             <div class="group">
                 <div class="form-actions">
-                    <input class="btn btn-primary" type="submit" value="Login" name="login"/>
+                    <input class="btn btn-primary" type="submit" value="Return" name="login"/>
                 </div>
             </div>
         </form>
