@@ -1,23 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>${trade}</title>
-</head>
-<body>
-	<h1>${trade}</h1>
-	<% 	if (request.getAttribute("error") != null) { %>
-			<div class="alert alert-danger" role="alert">
-				<%= request.getAttribute("error") %>
-		    </div>
-	<%	} %>
-
-	<form action="Controller" method="post">
-		<input type="hidden" value="${trade}" name="trade"/>
-		<label>Amount : </label>
-		<input type="text" name="amount"/><br>
-        <input type="submit" value="Submit" name="run"/>
-	</form>
-</body>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="description" content=""/>
+		<meta name="author" content=""/>
+		<link rel="icon" href="../../favicon.ico"/>
+		<title>${trade}</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<!-- Custom styles for this template-->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/app.css"/>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	</head>
+	<body>
+		<hgroup>
+            <h3>${trade}</h3>
+        </hgroup>
+		<form action="Controller" method="post">
+			<div class="group">
+				<input type="hidden" value="${trade}" name="trade"/>
+				<input type="number" name="amount"/>
+				<span class="highlight"></span>
+				<span class="bar"></span>
+				<label>Amount : </label>
+			</div>
+            <br>
+            <br>
+			<div class="group">
+				<div class="form-actions">
+                    <input class="btn btn-primary" type="submit" value="Submit" name="run"/>
+				</div>
+			</div>
+            <% 	if (request.getAttribute("error") != null) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= request.getAttribute("error") %>
+            </div>
+            <%	} %>
+		</form>
+	</body>
+    <script>
+        $(document).ready(function() {
+            $('input').blur(function () {
+                var $this = $(this);
+                if ($this.val())
+                    $this.addClass('used');
+                else
+                    $this.removeClass('used');
+            });
+        });
+    </script>
 </html>

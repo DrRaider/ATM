@@ -13,7 +13,7 @@ public class Security {
         ResultSet result;
         
         try {
-            String query = "SELECT CARD.ID FROM CARD INNER JOIN USERS ON USERS.ID = CARD.ID_USER WHERE CARD.CARD = SHA1(?) AND CARD.PASSWORD = SHA1(?) AND USERS.BANK = 1";
+            String query = "SELECT card.ID FROM card INNER JOIN users ON users.ID = card.ID_USER WHERE card.CARD = SHA1(?) AND card.PASSWORD = SHA1(?) AND users.BANK = 1";
             statement = db.prepareStatement(query);
             statement.setString(1, login);
             statement.setString(2, password);
@@ -22,7 +22,7 @@ public class Security {
             if (result.next()) {
                 return true;
             } else {
-                query = "SELECT CARD.ID FROM CARD INNER JOIN USERS ON USERS.ID = CARD.ID_USER WHERE CARD.CARD = SHA1(?) AND CARD.PASSWORD = SHA1(?) AND USERS.BANK = 0";
+                query = "SELECT card.ID FROM card INNER JOIN users ON users.ID = card.ID_USER WHERE card.CARD = SHA1(?) AND card.PASSWORD = SHA1(?) AND users.BANK = 0";
                 statement = db.prepareStatement(query);
                 statement.setString(1, login);
                 statement.setString(2, password);
@@ -46,7 +46,7 @@ public class Security {
         int idCard = 1;
 
         try {
-            String query = "SELECT CARD.ID FROM CARD INNER JOIN USERS ON USERS.ID = CARD.ID_USER WHERE CARD.CARD = ?";
+            String query = "SELECT card.ID FROM card INNER JOIN users ON users.ID = card.ID_USER WHERE card.CARD = ?";
             statement = db.prepareStatement(query);
             statement.setString(1, login);
             result = statement.executeQuery();

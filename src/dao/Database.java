@@ -8,7 +8,7 @@ public class Database {
     private static String url = "jdbc:mysql://localhost:3306/atm";
     private static String driverName = "com.mysql.jdbc.Driver";
     private static String username = "root";
-    private static String password = "root";
+    private static String password = "";
     private static Connection db = null;
 
     public static Connection getConnection() {
@@ -18,7 +18,7 @@ public class Database {
 	            try {
 	            	db = DriverManager.getConnection(url, username, password);
 	            } catch (SQLException ex) {
-	                System.out.println("Failed to create the database connection."); 
+	                System.out.println("Failed to create the database connection : " + ex);
 	            }
 	        } catch (ClassNotFoundException ex) {
 	            System.out.println("Driver not found."); 

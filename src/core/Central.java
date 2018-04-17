@@ -29,7 +29,7 @@ public class Central {
 	    }
 		
 		try {
-			PreparedStatement preparedStatement = db.prepareStatement("SELECT SUM(AMOUNT) SUM FROM TRANSACTION WHERE ID_CARD = ?");
+			PreparedStatement preparedStatement = db.prepareStatement("SELECT SUM(AMOUNT) SUM FROM transaction WHERE ID_CARD = ?");
 	        preparedStatement.setInt(1, idCard);
 	        ResultSet result = preparedStatement.executeQuery();
 	        int total_amount = 0;
@@ -40,7 +40,7 @@ public class Central {
 
 	    	if (amount <= total_amount) {
 				Statement statement = (Statement) db.createStatement();
-				statement.execute("INSERT INTO TRANSACTION (ID, AMOUNT, ID_CARD) VALUES (NULL, -" + amount + ", " + this.idCard + ")");
+				statement.execute("INSERT INTO transaction (ID, AMOUNT, ID_CARD) VALUES (NULL, -" + amount + ", " + this.idCard + ")");
 	    	} else {
 	    		return false;
 	    	}
@@ -64,7 +64,7 @@ public class Central {
 
 		try {
 			Statement statement = (Statement) db.createStatement();
-			statement.execute("INSERT INTO TRANSACTION (ID, AMOUNT, ID_CARD) VALUES (NULL, " + amount + ", " + this.idCard + ")");
+			statement.execute("INSERT INTO transaction (ID, AMOUNT, ID_CARD) VALUES (NULL, " + amount + ", " + this.idCard + ")");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -78,7 +78,7 @@ public class Central {
         ResultSet result = null;
 
         try {
-            statement = db.prepareStatement("SELECT SUM(AMOUNT) SUM FROM TRANSACTION WHERE ID_CARD = ?");
+            statement = db.prepareStatement("SELECT SUM(AMOUNT) SUM FROM transaction WHERE ID_CARD = ?");
             statement.setInt(1, idCard);
             result = statement.executeQuery();
 
@@ -100,7 +100,7 @@ public class Central {
         ResultSet result = null;
 
         try {
-            statement = db.prepareStatement("SELECT AMOUNT FROM TRANSACTION WHERE ID_CARD = ?");
+            statement = db.prepareStatement("SELECT AMOUNT FROM transaction WHERE ID_CARD = ?");
             statement.setInt(1, idCard);
             result = statement.executeQuery();
 

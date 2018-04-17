@@ -3,7 +3,7 @@
 }
 
 body {
-	font-family: Helvetica;
+	font-family: Helvetica, serif;
 	background: #eee;
 	-webkit-font-smoothing: antialiased;
 }
@@ -37,7 +37,6 @@ form {
 
 .group {
 	position: relative;
-	margin-bottom: 45px;
 }
 
 input {
